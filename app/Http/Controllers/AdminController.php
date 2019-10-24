@@ -37,7 +37,6 @@ class AdminController extends Controller
     public function contentUpdate(Request $request)
     {
 
-        dump($request);
         $attributes = $request->validate([
             'text' => 'required|min:10',
             'img_1' => 'file|image|mimes:jpeg,png,gif,webp|max:2048',
@@ -66,7 +65,6 @@ class AdminController extends Controller
             $file->storeAs('public/images/main', $filename);
             $attributes['img_3'] = $filename;
         }
-
 
         DB::table('content')->update($attributes);
         return back()->with('success', 'Сохранено');

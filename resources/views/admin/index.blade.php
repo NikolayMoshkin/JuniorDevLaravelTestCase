@@ -12,6 +12,7 @@
                     @endif
                     <th>ID заявки</th>
                     <th>Создана</th>
+                    <th>Тип мероприятия</th>
                     <th>Имя</th>
                     <th>Фамилия</th>
                     <th>Телефон</th>
@@ -39,6 +40,7 @@
                         @endif
                         <td>{{$proposal->id}}</td>
                         <td>{{$proposal->created_at}}</td>
+                        <td>{{$proposal->proposal_type}}</td>
                         <td>{{$proposal->name}}</td>
                         <td>{{$proposal->surname}}</td>
                         <td>{{$proposal->phone}}</td>
