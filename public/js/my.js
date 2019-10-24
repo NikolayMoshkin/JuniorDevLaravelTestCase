@@ -25,7 +25,7 @@ $(function () {
     });
 
     $('form .custom-file input').change(function(e){
-        let file = e.target.files[0];;
+        let file = e.target.files[0];
         $(this).closest('.custom-file').find('.custom-file-label').html(file.name);
         let self = $(this);
         let reader = new FileReader();
@@ -35,17 +35,7 @@ $(function () {
                 self.closest('.form-group').find('.content_img').attr("src", fileUrl);
             }
     });
-
-    // $('#uploadedCoachPhoto').change(function (e) {
-    //     let file = e.target.files[0];
-    //     $('.custom-file-label').html(file.name);
-    //     let reader = new FileReader();
-    //     reader.readAsDataURL(file);
-    //     reader.onload = function (e) {
-    //         let fileUrl = e.target.result;
-    //         $('#coachPhotoPreview').attr("src", fileUrl);
-    //     }
-    // });
+    
 
 });
 
