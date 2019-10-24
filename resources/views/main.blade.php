@@ -8,13 +8,13 @@
             <hr class="my-4">
             <div class="text-center">
                 <a href="storage/images/main/{{$content->img_1}}" data-fancybox data-caption="" data-width="600">
-                    <img src="storage/images/main/{{$content->img_1}}" alt="">
+                    <img src="storage/images/main/{{$content->img_1}}" alt="" width="150px">
                 </a>
                 <a href="storage/images/main/{{$content->img_2}}" data-fancybox data-caption="" data-width="600">
-                    <img src="storage/images/main/{{$content->img_2}}" alt="">
+                    <img src="storage/images/main/{{$content->img_2}}" alt="" width="150px">
                 </a>
                 <a href="storage/images/main/{{$content->img_3}}" data-fancybox data-caption="" data-width="600">
-                    <img src="storage/images/main/{{$content->img_3}}" alt="">
+                    <img src="storage/images/main/{{$content->img_3}}" alt="" width="150px">
                 </a>
             </div>
             <div class="row">

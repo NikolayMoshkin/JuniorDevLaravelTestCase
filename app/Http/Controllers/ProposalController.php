@@ -6,6 +6,8 @@ use App\EducationLevel;
 use App\Mail\AdminFormSend;
 use App\Mail\ClientFormSend;
 use App\Proposal;
+use App\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
@@ -43,18 +45,19 @@ class ProposalController extends Controller
 
             preg_match('/.+\?(.+)/',$request->utm, $matches);
             $attributes['utm'] = $matches ? $matches[1] : '';
-            dump($attributes);
-
+            //        dd($request->getRequestUri()); - хвост get запроса
 
             Proposal::create($attributes);
 
-            Mail::to(['email' => 'freeone1989@gmail.com'],['email' => 'nn.moshkin@ya.ru'])->queue(
+            $role_id = DB::table('proposal_roles')->select('proposal_roles.role_id')->where('proposal_type','=',$attributes['proposal_type'])->first()->role_id;
+            $admins = User::where('role_id',$role_id)->get();
+
+            Mail::to($attributes['email'])->queue(
                 new ClientFormSend($attributes['name'])
             );
-
-//            Mail::to($attributes['email'])->queue(     //асинхронный метод отправки почты
-//                new AdminFormSend()
-//            );
+            Mail::to($admins)->queue(
+                new AdminFormSend($attributes)
+            );
 
             return 1;
         }
@@ -63,4 +66,8 @@ class ProposalController extends Controller
         }
     }
 
+    public function destroy(Proposal $proposal){
+        $proposal->delete();
+        return redirect('/admin');
+    }
 }

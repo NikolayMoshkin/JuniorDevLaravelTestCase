@@ -16,9 +16,11 @@ class AdminFormSend extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public $attributes;
+
+    public function __construct($attributes)
     {
-        //
+        $this->attributes = $attributes;
     }
 
     /**

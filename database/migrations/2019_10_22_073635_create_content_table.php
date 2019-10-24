@@ -14,8 +14,6 @@ class CreateContentTable extends Migration
     public function up()
     {
         Schema::create('content', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
             $table->text('text');
             $table->string('img_1')->default('no_image.png');
             $table->string('img_2')->default('no_image.png');

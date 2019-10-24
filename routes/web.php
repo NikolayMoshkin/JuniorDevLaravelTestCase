@@ -16,7 +16,12 @@ Route::get('/', 'MainController@index');
 Route::get('/proposalA', 'ProposalController@index1');
 Route::get('/proposalB', 'ProposalController@index2');
 Route::post('/proposal', 'ProposalController@store');
+Route::delete('/proposal/{proposal}', 'ProposalController@destroy')->middleware('superadmin');
+
+Route::get('/admin', 'AdminController@index')->middleware('admin');
+Route::get('/admin/content', 'AdminController@contentShow')->middleware('superadmin');
+Route::post('/admin/content/update', 'AdminController@contentUpdate')->middleware('superadmin');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');

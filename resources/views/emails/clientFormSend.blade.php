@@ -1,6 +1,6 @@
 @component('mail::message')
-# Introduction
-{{$username}}, спасибо, что зарегистрировались на мероприятии!
+Уважаемый, {{$username}}.
+<p>Спасибо, что зарегистрировались на мероприятии!</p>
 
 @component('mail::button', ['url' => 'http://juniortest'])
 Button Text

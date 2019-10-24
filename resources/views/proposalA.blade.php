@@ -8,7 +8,7 @@
         <div>
             <h2>Оставьте заявку A</h2>
         </div>
-        <form class="needs-validation" id="requestForm" enctype="multipart/form-data" method="POST" action="/proposal">
+        <form class="needs-validation" id="requestForm" enctype="multipart/form-data">
             @csrf
             @include('form')
             <input type="hidden" name='proposal_type' value="1">

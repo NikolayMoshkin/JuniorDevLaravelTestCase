@@ -1,7 +1,11 @@
 @component('mail::message')
-# Introduction
+Админы, внимание!
 
-The body of your message.
+Зарегистрирована новая заяка.
+
+<p>Имя: {{$attributes['name']}}</p>
+<p>Email: {{$attributes['email']}}</p>
+<p>Телефон: {{$attributes['phone']}}</p>
 
 @component('mail::button', ['url' => ''])
 Button Text
