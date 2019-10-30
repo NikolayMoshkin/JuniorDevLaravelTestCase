@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 @section('admin-content')
-    <div class="container">
+    <div>
         <h2 class="text-center">Панель администратора: {{$role}}</h2>
-        <h4>Заявки</h4>
-        <div class="col-md-11 justify-content-center">
+        <div class="justify-content-center" style="padding: 3em">
+            <h4>Заявки</h4>
             <table class="table">
                 <thead class='thead-light'>
                 <tr>
@@ -18,6 +18,7 @@
                     <th>Телефон</th>
                     <th>Email</th>
                     <th>Фото</th>
+                    <th>Текст</th>
                     @if($isSuperAdmin)
                         <th>ip</th>
                         <th>utm</th>
@@ -46,6 +47,7 @@
                         <td>{{$proposal->phone}}</td>
                         <td>{{$proposal->email}}</td>
                         <td><img src="/storage/images/upload/{{$proposal->img}}" alt="" width="50px"></td>
+                        <td style="width: 50%">{{$proposal->review}}</td>
                         @if($isSuperAdmin)
                             <td>{{$proposal->ip}}</td>
                             <td style="width: 5%">{{$proposal->utm}}</td>

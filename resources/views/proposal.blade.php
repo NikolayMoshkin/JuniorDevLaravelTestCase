@@ -6,12 +6,12 @@
         <div id="serverResponseError" class="alert alert-danger text-center" style="display: none">
         </div>
         <div>
-            <h2>Оставьте заявку B</h2>
+            <h2>Оставьте заявку на мероприятие {{$proposal_type}}</h2>
         </div>
         <form class="needs-validation" id="requestForm" enctype="multipart/form-data">
             @csrf
             @include('form')
-            <input type="hidden" name='proposal_type' value="2">
+            <input type="hidden" name='proposal_type' value="{{$proposal_type}}">
         </form>
     </div>
 @endsection

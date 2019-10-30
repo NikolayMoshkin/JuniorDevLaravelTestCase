@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProposalRolesTable extends Migration
+class CreateProposalTypeRoleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateProposalRolesTable extends Migration
      */
     public function up()
     {
-        Schema::create('proposal_roles', function (Blueprint $table) {
+        Schema::create('proposal_type_role', function (Blueprint $table) {
             $table->unsignedInteger('proposal_type');
             $table->unsignedInteger('role_id');
+
         });
     }
 
@@ -26,6 +27,6 @@ class CreateProposalRolesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('proposal_roles');
+        Schema::dropIfExists('proposalType_role');
     }
 }

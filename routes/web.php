@@ -11,10 +11,10 @@
 |
 */
 
+
 Route::get('/', 'MainController@index');
 
-Route::get('/proposalA', 'ProposalController@index1');
-Route::get('/proposalB', 'ProposalController@index2');
+Route::get('/proposal', 'ProposalController@index');
 Route::post('/proposal', 'ProposalController@store');
 Route::delete('/proposal/{proposal}', 'ProposalController@destroy')->middleware('superadmin');
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Content;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -23,7 +24,7 @@ class MainController extends Controller
      */
     public function index()
     {
-        $content = DB::table('content')->first();
+        $content = Content::first();
         return view('main', compact('content'));
     }
 }

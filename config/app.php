@@ -229,4 +229,10 @@ return [
 
     ],
 
+    'roles'=>[
+        'admin A' => 2,
+        'admin B' => 3,
+        'superadmin' => 4,
+    ]
+
 ];

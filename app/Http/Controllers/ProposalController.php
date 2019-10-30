@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\EducationLevel;
+use App\Events\ProposalSent;
 use App\Mail\AdminFormSend;
 use App\Mail\ClientFormSend;
 use App\Proposal;
+use App\ProposalTypeRole;
 use App\User;
+use Illuminate\Console\Scheduling\Event;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
@@ -16,9 +19,10 @@ use Illuminate\Http\Request;
 
 class ProposalController extends Controller
 {
-    public function index1(){
+    public function index(Request $request){
         $educ_lvl = EducationLevel::getEductionLevels();
-        return view('proposalA', compact('educ_lvl'));
+        $proposal_type = $request->type;
+        return view('proposal', compact('educ_lvl', 'proposal_type'));
     }
 
     public function index2(){
@@ -29,7 +33,6 @@ class ProposalController extends Controller
     public function store(Request $request, Proposal $proposal){
         try{
             $attributes = $request->all();
-
             $file = $request->img ? $request->img : null;
             if ($file) {
                 $request->validate([
@@ -49,15 +52,10 @@ class ProposalController extends Controller
 
             Proposal::create($attributes);
 
-            $role_id = DB::table('proposal_roles')->select('proposal_roles.role_id')->where('proposal_type','=',$attributes['proposal_type'])->first()->role_id;
+            $role_id = ProposalTypeRole::where('proposal_type','=',$attributes['proposal_type'])->first()->role_id;
             $admins = User::where('role_id',$role_id)->get();
 
-            Mail::to($attributes['email'])->queue(
-                new ClientFormSend($attributes['name'])
-            );
-            Mail::to($admins)->queue(
-                new AdminFormSend($attributes)
-            );
+            \event(new ProposalSent($attributes, $admins));
 
             return 1;
         }

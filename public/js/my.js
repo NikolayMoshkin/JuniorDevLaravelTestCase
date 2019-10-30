@@ -35,7 +35,6 @@ $(function () {
                 self.closest('.form-group').find('.content_img').attr("src", fileUrl);
             }
     });
-    
 
 });
 

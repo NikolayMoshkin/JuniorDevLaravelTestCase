@@ -8,6 +8,7 @@
             <hr class="my-4">
             <div class="text-center">
                 <a href="storage/images/main/{{$content->img_1}}" data-fancybox data-caption="" data-width="600">
+                    <img src='{{Storage::url("images/main/$content->img_1")}}' alt="" width="150px">
                     <img src="storage/images/main/{{$content->img_1}}" alt="" width="150px">
                 </a>
                 <a href="storage/images/main/{{$content->img_2}}" data-fancybox data-caption="" data-width="600">
@@ -18,9 +19,9 @@
                 </a>
             </div>
             <div class="row">
-                <div class="btn_container"><a class="btn btn-primary btn-lg" href="/proposalA" role="button">Заявка A</a>
+                <div class="btn_container"><a class="btn btn-primary btn-lg" href="/proposal?type=1" role="button">Заявка A</a>
                 </div>
-                <div class="btn_container"><a class="btn btn-success btn-lg" href="/proposalB" role="button">Заявка B</a>
+                <div class="btn_container"><a class="btn btn-success btn-lg" href="/proposal?type=2" role="button">Заявка B</a>
                 </div>
             </div>
         </div>
